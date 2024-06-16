@@ -4,30 +4,30 @@ import os
 import csv
 
 folder1 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_raw\train\bacterial_leaf_blight"
-folder2 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_CS2\bacterial_leaf_blight_CS2"
+folder2 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_HE_V\bacterial_leaf_blight_HE_V"
 
 folder3 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_raw\train\brown_spot"
-folder4 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_CS2\brown_spot_CS2"
+folder4 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_HE_V\brown_spot_HE_V"
 
 folder5 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_raw\train\healthy"
-folder6 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_CS2\healthy_CS2"
+folder6 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_HE_V\healthy_HE_V"
 
 folder7 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_raw\train\leaf_blast"
-folder8 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_CS2\leaf_blast__CS2"
+folder8 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_HE_V\leaf_blast_HE_V"
 
 folder9 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_raw\train\leaf_scald"
-folder10 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_CS2\leaf_scald__CS2"
+folder10 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_HE_V\leaf_scald_HE_V"
 
 folder11 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_raw\train\narrow_brown_spot"
-folder12 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_CS2\narrow_brown_spot__CS2"
+folder12 = r"C:\Users\ihver\Desktop\ay2023-2024-2nd-sem-cmsc190-sp2-ihvergara\images\dataset_HE_V\narrow_brown_spot_HE_V"
 
-output_file1 = "SSIM_raw_cs2_leafblight.csv"
+output_file1 = "SSIM_raw_HE_V_leafblight.csv"
 
-output_file3 = "SSIM_raw_cs2_healthy.csv"
-output_file4 = "SSIM_raw_cs2_leafblast.csv"
-output_file5 = "SSIM_raw_cs2_leafscald.csv"
-output_file6 = "SSIM_raw_cs2_narrowbrownspot.csv"
-output_file2 = "SSIM_raw_cs2_brownspot.csv"
+output_file3 = "SSIM_raw_HE_V_healthy.csv"
+output_file4 = "SSIM_raw_HE_V_leafblast.csv"
+output_file5 = "SSIM_raw_HE_V_leafscald.csv"
+output_file6 = "SSIM_raw_HE_V_narrowbrownspot.csv"
+output_file2 = "SSIM_raw_HE_V_brownspot.csv"
 
 #leafblight
 # Open the CSV file for writing
@@ -41,7 +41,7 @@ with open(output_file1, 'w', newline='') as csvfile:
     name, ext = os.path.splitext(filename)
   
     # Check if corresponding processed image exists
-    processed_file = os.path.join(folder2, name + " CS2" + ext)
+    processed_file = os.path.join(folder2, name + " HE_V" + ext)
     if os.path.exists(processed_file):
       # Load images using OpenCV (assuming RGB)
       image1 = cv2.imread(os.path.join(folder1, filename))
@@ -52,7 +52,7 @@ with open(output_file1, 'w', newline='') as csvfile:
         print(f"Error loading images: {filename} and {processed_file}")
         continue
 
-       # Calculate NRMSE using skimage
+       # Calculate SSIM using skimage
       ssim_value = ssim(image1, image2, channel_axis=-1, data_range=255)  # Assuming 8-bit images
 
       # Write data to CSV file
@@ -73,7 +73,7 @@ with open(output_file2, 'w', newline='') as csvfile:
     name, ext = os.path.splitext(filename)
   
     # Check if corresponding processed image exists
-    processed_file = os.path.join(folder4, name + " CS2" + ext)
+    processed_file = os.path.join(folder4, name + " HE_V" + ext)
     if os.path.exists(processed_file):
       # Load images using OpenCV (assuming RGB)
       image1 = cv2.imread(os.path.join(folder3, filename))
@@ -105,7 +105,7 @@ with open(output_file3, 'w', newline='') as csvfile:
     name, ext = os.path.splitext(filename)
   
     # Check if corresponding processed image exists
-    processed_file = os.path.join(folder6, name + " CS2" + ext)
+    processed_file = os.path.join(folder6, name + " HE_V" + ext)
     if os.path.exists(processed_file):
       # Load images using OpenCV (assuming RGB)
       image1 = cv2.imread(os.path.join(folder5, filename))
@@ -136,7 +136,7 @@ with open(output_file4, 'w', newline='') as csvfile:
     name, ext = os.path.splitext(filename)
   
     # Check if corresponding processed image exists
-    processed_file = os.path.join(folder8, name + " CS2" + ext)
+    processed_file = os.path.join(folder8, name + " HE_V" + ext)
     if os.path.exists(processed_file):
       # Load images using OpenCV (assuming RGB)
       image1 = cv2.imread(os.path.join(folder7, filename))
@@ -168,7 +168,7 @@ with open(output_file5, 'w', newline='') as csvfile:
     name, ext = os.path.splitext(filename)
   
     # Check if corresponding processed image exists
-    processed_file = os.path.join(folder10, name + " CS2" + ext)
+    processed_file = os.path.join(folder10, name + " HE_V" + ext)
     if os.path.exists(processed_file):
       # Load images using OpenCV (assuming RGB)
       image1 = cv2.imread(os.path.join(folder9, filename))
@@ -199,7 +199,7 @@ with open(output_file6, 'w', newline='') as csvfile:
     name, ext = os.path.splitext(filename)
   
     # Check if corresponding processed image exists
-    processed_file = os.path.join(folder12, name + " CS2" + ext)
+    processed_file = os.path.join(folder12, name + " HE_V" + ext)
     if os.path.exists(processed_file):
       # Load images using OpenCV (assuming RGB)
       image1 = cv2.imread(os.path.join(folder11, filename))
