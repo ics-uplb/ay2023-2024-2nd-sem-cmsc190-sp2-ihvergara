@@ -5,6 +5,7 @@ This study presents a digital platform for automated rice disease detection, add
 
 Keywords: timage enhancement techniques, rice disease, CNN, histogram equalization, contrast stretching
 
+
 MRUANACLETO VERIFIED 04 OCTOBER 2024
 
 
